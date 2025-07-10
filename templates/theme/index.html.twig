@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ThemeController!{% endblock %}
+{% block title %}Theme index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Theme index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ID_theme</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for theme in themes %}
+            <tr>
+                <td>{{ theme.id }}</td>
+                <td>{{ theme.IDTheme }}</td>
+                <td>{{ theme.nom }}</td>
+                <td>{{ theme.description }}</td>
+                <td>
+                    <a href="{{ path('app_theme_show', {'id': theme.id}) }}">show</a>
+                    <a href="{{ path('app_theme_edit', {'id': theme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/CDA/Desktop/Nouveau dossier/It-Training/src/Controller/ThemeController.php</code></li>
-        <li>Your template at <code>C:/Users/CDA/Desktop/Nouveau dossier/It-Training/templates/theme/index.html.twig</code></li>
-    </ul>
-</div>
+    <a href="{{ path('app_theme_new') }}">Create new</a>
 {% endblock %}

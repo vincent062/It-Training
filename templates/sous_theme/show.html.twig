@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SousTheme{% endblock %}
+
+{% block body %}
+    <h1>SousTheme</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sous_theme.id }}</td>
+            </tr>
+            <tr>
+                <th>ID_soustheme</th>
+                <td>{{ sous_theme.IDSoustheme }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ sous_theme.nom }}</td>
+            </tr>
+            <tr>
+                <th>Id_theme_parent</th>
+                <td>{{ sous_theme.idThemeParent }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sous_theme_index') }}">back to list</a>
+
+    <a href="{{ path('app_sous_theme_edit', {'id': sous_theme.id}) }}">edit</a>
+
+    {{ include('sous_theme/_delete_form.html.twig') }}
+{% endblock %}
