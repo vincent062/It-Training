@@ -1,19 +1,1 @@
-{{ form_start(form) }}
-    {# Affiche les erreurs globales du formulaire (ex: CSRF token invalide) #}
-    {{ form_errors(form) }}
 
-    {# Champ "Titre" #}
-    <div class="mb-3">
-        {{ form_row(form.titre) }}
-    </div>
-
-    {# Champ "Description" #}
-    <div class="mb-3">
-        {{ form_row(form.description) }}
-    </div>
-
-    {# Ajoutez d'autres champs de la même manière #}
-    {# {{ form_row(form.autre_champ) }} #}
-
-    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(form) }}
