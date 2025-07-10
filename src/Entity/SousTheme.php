@@ -22,6 +22,9 @@ class SousTheme
     #[ORM\Column(length: 255)]
     private ?string $id_theme_parent = null;
 
+    #[ORM\ManyToOne(inversedBy: 'sousThemes')]
+    private ?Theme $Theme = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class SousTheme
     public function setIdThemeParent(string $id_theme_parent): static
     {
         $this->id_theme_parent = $id_theme_parent;
+
+        return $this;
+    }
+
+    public function getTheme(): ?Theme
+    {
+        return $this->Theme;
+    }
+
+    public function setTheme(?Theme $Theme): static
+    {
+        $this->Theme = $Theme;
 
         return $this;
     }

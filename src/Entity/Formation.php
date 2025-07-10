@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\FormationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Type;
 
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
 class Formation
@@ -23,14 +24,14 @@ class Formation
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $duree = null;
+
     #[ORM\Column]
-    private ?\DateTime $duree = null;
+    private ?int $prix = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $prix = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $id_soustheme_parent = null;
+    #[ORM\ManyToOne(targetEntity: SousTheme::class)]
+    private ?SousTheme $sousthemeParent = null;
 
     public function getId(): ?int
     {
@@ -78,7 +79,7 @@ class Formation
         return $this->duree;
     }
 
-    public function setDuree(\DateTime $duree): static
+    public function setDuree(int $duree): static
     {
         $this->duree = $duree;
 
@@ -97,14 +98,14 @@ class Formation
         return $this;
     }
 
-    public function getIdSousthemeParent(): ?string
+    public function getSousthemeParent(): ?string
     {
-        return $this->id_soustheme_parent;
+        return $this->sousthemeParent;
     }
 
-    public function setIdSousthemeParent(string $id_soustheme_parent): static
+    public function setSousthemeParent(?SousTheme $sousthemeParent): static
     {
-        $this->id_soustheme_parent = $id_soustheme_parent;
+        $this->sousthemeParent = $sousthemeParent;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ThemeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,17 @@ class Theme
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
+
+    /**
+     * @var Collection<int, SousTheme>
+     */
+    #[ORM\OneToMany(targetEntity: SousTheme::class, mappedBy: 'Theme')]
+    private Collection $sousThemes;
+
+    public function __construct()
+    {
+        $this->sousThemes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +73,36 @@ class Theme
     public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SousTheme>
+     */
+    public function getSousThemes(): Collection
+    {
+        return $this->sousThemes;
+    }
+
+    public function addSousTheme(SousTheme $sousTheme): static
+    {
+        if (!$this->sousThemes->contains($sousTheme)) {
+            $this->sousThemes->add($sousTheme);
+            $sousTheme->setTheme($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSousTheme(SousTheme $sousTheme): static
+    {
+        if ($this->sousThemes->removeElement($sousTheme)) {
+            // set the owning side to null (unless already changed)
+            if ($sousTheme->getTheme() === $this) {
+                $sousTheme->setTheme(null);
+            }
+        }
 
         return $this;
     }
