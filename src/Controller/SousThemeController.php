@@ -12,15 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/sous/theme')]
-<<<<<<< HEAD
 final class SousThemeController extends AbstractController
 {
     #[Route(name: 'app_sous_theme_index', methods: ['GET'])]
-=======
-    class SousThemeController extends AbstractController
-{
-    #[Route('/' , name: 'app_soustheme', methods: ['GET'])]
->>>>>>> 0a4f66fcd1727f58be6797457efa227fc918a899
     public function index(SousThemeRepository $sousThemeRepository): Response
     {
         return $this->render('sous_theme/index.html.twig', [
