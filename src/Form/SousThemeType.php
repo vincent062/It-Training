@@ -14,7 +14,6 @@ class SousThemeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('ID_soustheme')
             ->add('nom',TextType::class,[
               'attr'=>[
                     'class'=>'form-control',
@@ -30,7 +29,6 @@ class SousThemeType extends AbstractType
                       new Assert\NotBlank()
                 ]
             ])  
-            ->add('id_theme_parent')
         ;
     }
 

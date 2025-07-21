@@ -14,32 +14,15 @@ class SousTheme
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $ID_soustheme = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $id_theme_parent = null;
 
     #[ORM\ManyToOne(inversedBy: 'sousThemes')]
-    private ?Theme $Theme = null;
+    private ?Theme $theme = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIDSoustheme(): ?string
-    {
-        return $this->ID_soustheme;
-    }
-
-    public function setIDSoustheme(string $ID_soustheme): static
-    {
-        $this->ID_soustheme = $ID_soustheme;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -54,27 +37,21 @@ class SousTheme
         return $this;
     }
 
-    public function getIdThemeParent(): ?string
-    {
-        return $this->id_theme_parent;
-    }
-
-    public function setIdThemeParent(string $id_theme_parent): static
-    {
-        $this->id_theme_parent = $id_theme_parent;
-
-        return $this;
-    }
 
     public function getTheme(): ?Theme
     {
-        return $this->Theme;
+        return $this->theme;
     }
 
-    public function setTheme(?Theme $Theme): static
+    public function setTheme(?Theme $theme): static
     {
-        $this->Theme = $Theme;
+        $this->theme = $theme;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+       return $this->nom;
     }
 }

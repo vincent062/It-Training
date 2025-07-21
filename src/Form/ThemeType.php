@@ -15,21 +15,6 @@ class ThemeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('id_theme',TextType::class,[
-                'attr'=>[
-                    'class'=>'form-control',
-                    'minlength'=>1,
-                    'maxlength'=>800
-                ],
-                'label'=>'Formation',
-                'label_attr'=>[
-                    'class'=> 'form-label mt-4'
-                ],
-                'constraints'=>[
-                      new Assert\Length(['min'=>1,'max'=>800]),
-                      new Assert\NotBlank()
-                ]
-            ])
             ->add('nom',TextType::class,[
               'attr'=>[
                     'class'=>'form-control',

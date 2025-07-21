@@ -16,8 +16,6 @@ class Theme
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $ID_theme = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
@@ -39,18 +37,6 @@ class Theme
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIDTheme(): ?string
-    {
-        return $this->ID_theme;
-    }
-
-    public function setIDTheme(string $ID_theme): static
-    {
-        $this->ID_theme = $ID_theme;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -105,5 +91,10 @@ class Theme
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
     }
 }

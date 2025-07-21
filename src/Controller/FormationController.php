@@ -17,7 +17,6 @@ final class FormationController extends AbstractController
     #[Route(name: 'app_formation_index', methods: ['GET'])]
     public function index(FormationRepository $formationRepository): Response
     {
-        
             $formations = $formationRepository->findAllWithSousTheme();
             return $this->render('formation/index.html.twig', [
             'formations' => $formations,
@@ -35,6 +34,7 @@ final class FormationController extends AbstractController
             $entityManager->persist($formation);
             $entityManager->flush();
 
+            $this->addFlash('success', 'La formation a été créée avec succès.');
             return $this->redirectToRoute('app_formation_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -61,6 +61,7 @@ final class FormationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', 'La formation a été mise à jour.');
             return $this->redirectToRoute('app_formation_index', [], Response::HTTP_SEE_OTHER);
         }
 

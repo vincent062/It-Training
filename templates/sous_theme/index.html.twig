@@ -19,10 +19,7 @@
         <tbody>
         {% for sous_theme in sous_themes %}
             <tr>
-                <td>{{ sous_theme.id }}</td>
-                <td>{{ sous_theme.IDSoustheme }}</td>
                 <td>{{ sous_theme.nom }}</td>
-                <td>{{ sous_theme.idThemeParent }}</td>
                 <td>
                     <a href="{{ path('app_sous_theme_show', {'id': sous_theme.id}) }}">show</a>
                     <a href="{{ path('app_sous_theme_edit', {'id': sous_theme.id}) }}">edit</a>

@@ -15,8 +15,6 @@ class Formation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $id_formation = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $titre = null;
@@ -38,17 +36,6 @@ class Formation
         return $this->id;
     }
 
-    public function getIdFormation(): ?string
-    {
-        return $this->id_formation;
-    }
-
-    public function setIdFormation(string $id_formation): static
-    {
-        $this->id_formation = $id_formation;
-
-        return $this;
-    }
 
     public function getTitre(): ?string
     {
@@ -109,4 +96,18 @@ class Formation
 
         return $this;
     }
+
+    public function getNom(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setNom(string $titre): static
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+
 }

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/sous/theme')]
+#[Route('/sous-theme')]
 final class SousThemeController extends AbstractController
 {
     #[Route(name: 'app_sous_theme_index', methods: ['GET'])]
