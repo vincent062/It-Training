@@ -1,3 +1,5 @@
+import { registerReactControllerComponents } from '@symfony/ux-react';
+import './bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -7,3 +9,15 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
+
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import ContactForm from './components/ContactForm';
+
+const container = document.getElementById('react-form');
+if (container) {
+    const root = createRoot(container);
+    root.render(<ContactForm />);
+}
+
+registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));
